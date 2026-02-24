@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>JOKO Central Panel</title>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <div class="max-w-6xl mx-auto p-4">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div>
+        <div class="text-2xl font-bold">JOKO Central Panel</div>
+        <div class="text-slate-400 text-sm">Kontrol semua agent dari server pusat (Cloudflare Pages)</div>
+      </div>
+      <div class="flex gap-2 flex-wrap">
+        <button id="btnRefresh" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700">Refresh</button>
+        <button id="btnStopAllAgents" class="px-3 py-2 rounded-xl bg-rose-700 hover:bg-rose-600">Stop ALL Agents</button>
+        <button id="btnRestartActive" class="px-3 py-2 rounded-xl bg-sky-700 hover:bg-sky-600">Restart ACTIVE (Loop)</button>
+      </div>
+    </div>
+
+    <div class="mt-4 p-4 rounded-2xl border border-slate-800 bg-black/30">
+      <div class="text-sm text-slate-300">
+        <b>Auto-detect:</b> agent akan auto register ke panel pusat via <code>/api/register</code> (KV).
+        Agent yang tidak heartbeat akan hilang otomatis (TTL).
+      </div>
+      <div class="text-xs text-slate-400 mt-2">
+        Catatan: quick tunnel <code>*.trycloudflare.com</code> tidak bisa custom <code>joko1.trycloudflare.com</code>.
+        Kalau mau nama stabil, pakai Cloudflare Zero Trust Named Tunnel + domain sendiri.
+      </div>
+    </div>
+
+    <div id="grid" class="mt-4 grid md:grid-cols-2 gap-3"></div>
+
+    <div class="mt-6 text-xs text-slate-500">
+      Powered by Cloudflare Pages + Functions + KV • no-store cache
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
